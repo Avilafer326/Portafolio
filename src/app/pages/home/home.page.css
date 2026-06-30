@@ -1,1 +1,3 @@
-﻿.py-section { padding-top: 120px; padding-bottom: 120px; }
+﻿:host {
+  display: block;
+}

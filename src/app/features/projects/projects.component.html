@@ -1,0 +1,39 @@
+<section id="projects" class="py-section">
+  <div class="max-w-content mx-auto px-8">
+    <app-section-title
+      title="Proyectos"
+      subtitle="Una selección de trabajos que representan mi experiencia y versatilidad."
+    />
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      @for (project of projects; track project.title + $index) {
+        <div class="group rounded-xl border border-border bg-surface overflow-hidden hover:border-accent-purple hover:shadow-[0_0_20px_rgba(139,92,246,0.12)] transition-all duration-300">
+          <!-- Image placeholder -->
+          <div class="aspect-video bg-elevation flex items-center justify-center border-b border-border">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-text-muted">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+              <line x1="12" y1="22.08" x2="12" y2="12"/>
+            </svg>
+          </div>
+          <div class="p-5 space-y-3">
+            <h3 class="text-text-main font-semibold text-lg">{{ project.title }}</h3>
+            <p class="text-text-muted text-sm leading-relaxed">{{ project.description }}</p>
+            <div class="flex flex-wrap gap-2">
+              @for (tech of project.technologies; track tech) {
+                <span class="px-2 py-1 rounded-md bg-elevation text-text-secondary text-xs font-medium">{{ tech }}</span>
+              }
+            </div>
+            <div class="pt-2">
+              @if (project.status === 'upcoming') {
+                <span class="text-accent-teal text-xs font-medium">Próximamente</span>
+              } @else {
+                <app-button label="Ver proyecto" variant="secondary" />
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
