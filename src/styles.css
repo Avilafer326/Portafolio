@@ -1,3 +1,43 @@
-/* You can add global styles to this file, and also import other style files */
+﻿@import 'tailwindcss';
 
-@import 'tailwindcss';
+@theme {
+  --color-bg-primary: #1D2223;
+  --color-surface: #262C2E;
+  --color-elevation: #31393B;
+  --color-border: #40494B;
+  --color-text-main: #F3F5F5;
+  --color-text-secondary: #B4BCBD;
+  --color-text-muted: #707B7D;
+  --color-accent-purple: #8B5CF6;
+  --color-accent-purple-hover: #9F74FF;
+  --color-accent-purple-glow: rgba(139,92,246,0.22);
+  --color-accent-teal: #5BC9C3;
+  --color-accent-teal-hover: #6ED7D2;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'Fira Code', 'Cascadia Code', 'SF Mono', Menlo, Consolas, monospace;
+}
+
+html {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-main);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body { min-height: 100vh; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--color-bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-text-muted); }
