@@ -2,6 +2,13 @@ import { Component, input, output } from '@angular/core';
 
 export type ButtonVariant = 'primary' | 'secondary';
 
+/**
+ * Botón reutilizable con dos variantes:
+ * - primary: fondo morado, texto blanco (ideal para CTAs)
+ * - secondary: borde gris, texto oscuro (ideal para acciones secundarias)
+ *
+ * El modo oscuro alterna los colores de borde/texto vía `dark:` prefix.
+ */
 @Component({
   selector: 'app-button',
   imports: [],
@@ -17,7 +24,9 @@ export type ButtonVariant = 'primary' | 'secondary';
         [class.shadow-md]="variant() === 'primary'"
         [class.border]="variant() === 'secondary'"
         [class.border-border]="variant() === 'secondary'"
+        [class.dark:border-border-dark]="variant() === 'secondary'"
         [class.text-text-main]="variant() === 'secondary'"
+        [class.dark:text-text-main-dark]="variant() === 'secondary'"
         [class.hover-border-accent-purple]="variant() === 'secondary'"
         [class.hover-text-accent-purple]="variant() === 'secondary'"
       >
@@ -37,7 +46,9 @@ export type ButtonVariant = 'primary' | 'secondary';
         [class.shadow-md]="variant() === 'primary'"
         [class.border]="variant() === 'secondary'"
         [class.border-border]="variant() === 'secondary'"
+        [class.dark:border-border-dark]="variant() === 'secondary'"
         [class.text-text-main]="variant() === 'secondary'"
+        [class.dark:text-text-main-dark]="variant() === 'secondary'"
         [class.hover-border-accent-purple]="variant() === 'secondary'"
         [class.hover-text-accent-purple]="variant() === 'secondary'"
       >

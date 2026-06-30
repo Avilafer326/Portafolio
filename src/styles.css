@@ -1,22 +1,55 @@
 ﻿@import 'tailwindcss';
 
+/* ============================================================
+   VARIANT DARK MODE
+   Activa las clases `dark:` cuando un ancestro tiene `.dark`
+   El ThemeService añade/elimina esta clase en <html>
+   ============================================================ */
+@variant dark (&:where(.dark, .dark *));
+
 @theme {
-  --color-bg-primary: #1D2223;
-  --color-surface: #262C2E;
-  --color-elevation: #31393B;
-  --color-border: #40494B;
-  --color-text-main: #F3F5F5;
-  --color-text-secondary: #B4BCBD;
-  --color-text-muted: #707B7D;
+  /* ============================================================
+     PALETA LIGHT MODE (default)
+     Se usa cuando NO hay clase `.dark` en <html>
+     ============================================================ */
+  --color-bg-primary: #F4F7F7;
+  --color-surface: #FFFFFF;
+  --color-elevation: #EBF0F0;
+  --color-border: #DDE5E5;
+  --color-text-main: #1A1F20;
+  --color-text-secondary: #4A5557;
+  --color-text-muted: #7A8789;
+
+  /* ============================================================
+     PALETA DARK MODE
+     Se activa vía `dark:` cuando `.dark` está presente
+     ============================================================ */
+  --color-bg-primary-dark: #1D2223;
+  --color-surface-dark: #262C2E;
+  --color-elevation-dark: #31393B;
+  --color-border-dark: #40494B;
+  --color-text-main-dark: #F3F5F5;
+  --color-text-secondary-dark: #B4BCBD;
+  --color-text-muted-dark: #707B7D;
+
+  /* ============================================================
+     ACENTOS (se mantienen en ambos modos, o con leve ajuste)
+     ============================================================ */
   --color-accent-purple: #8B5CF6;
   --color-accent-purple-hover: #9F74FF;
   --color-accent-purple-glow: rgba(139,92,246,0.22);
   --color-accent-teal: #5BC9C3;
   --color-accent-teal-hover: #6ED7D2;
+
+  /* Layout y tipografía */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --font-mono: 'Fira Code', 'Cascadia Code', 'SF Mono', Menlo, Consolas, monospace;
 }
 
+/* ============================================================
+   ESTILOS BASE
+   Aplican el fondo y texto según el modo activo
+   ============================================================ */
 html {
   background-color: var(--color-bg-primary);
   color: var(--color-text-main);
@@ -26,8 +59,18 @@ html {
   scroll-behavior: smooth;
 }
 
-body { min-height: 100vh; }
+html.dark {
+  background-color: var(--color-bg-primary-dark);
+  color: var(--color-text-main-dark);
+}
 
+body {
+  min-height: 100vh;
+}
+
+/* ============================================================
+   REDUCED MOTION — respeta preferencias de accesibilidad
+   ============================================================ */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -37,7 +80,28 @@ body { min-height: 100vh; }
   }
 }
 
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: var(--color-bg-primary); }
-::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: var(--color-text-muted); }
+/* ============================================================
+   SCROLLBAR PERSONALIZADA
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-primary);
+}
+html.dark ::-webkit-scrollbar-track {
+  background: var(--color-bg-primary-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: var(--color-border-dark);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted-dark);
+}

@@ -13,15 +13,14 @@
     <div class="space-y-10">
       @for (category of categories; track category) {
         <div>
-          <h3 class="text-text-muted text-xs font-semibold uppercase tracking-wider mb-4">{{ category }}</h3>
+          <h3 class="text-text-muted dark:text-text-muted-dark text-xs font-semibold uppercase tracking-wider mb-4">{{ category }}</h3>
           <div class="flex flex-wrap gap-3">
             @for (skill of getSkillsByCategory(category); track skill.name) {
-              <div class="flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-surface hover:border-accent-teal hover:shadow-[0_0_15px_rgba(91,201,195,0.15)] transition-all duration-300 group cursor-default">
+              <div class="flex items-center gap-2 px-4 py-2 rounded-lg border border-border dark:border-border-dark bg-surface dark:bg-surface-dark hover:border-accent-teal hover:shadow-[0_0_15px_rgba(91,201,195,0.15)] transition-all duration-300 group cursor-default">
                 <span class="text-accent-teal group-hover:text-accent-teal-hover transition-colors">
-                  <!-- Icon placeholder -->
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
                 </span>
-                <span class="text-text-main text-sm font-medium">{{ skill.name }}</span>
+                <span class="text-text-main dark:text-text-main-dark text-sm font-medium">{{ skill.name }}</span>
               </div>
             }
           </div>
