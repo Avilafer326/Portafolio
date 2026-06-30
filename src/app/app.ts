@@ -1,12 +1,18 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ThemeService } from './core/services/theme.service';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, NavbarComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
-  protected readonly title = signal('Portafolio');
+export class App implements OnInit {
+  private themeService = inject(ThemeService);
+
+  ngOnInit(): void {
+    this.themeService.setTheme(this.themeService.theme());
+  }
 }

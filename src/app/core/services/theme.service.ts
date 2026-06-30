@@ -15,7 +15,9 @@ export class ThemeService {
       if (typeof localStorage !== 'undefined') {
         localStorage.setItem(this.storageKey, current);
       }
-      this.applyTheme(current);
+      if (typeof document !== 'undefined') {
+        this.applyTheme(current);
+      }
     });
   }
 
